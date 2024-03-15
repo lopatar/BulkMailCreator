@@ -3,17 +3,19 @@ LOG_FILE="email-accounts.log"
 
 function logToFile()
 {
-  local MESSAGE="LOG: ${1}"
-  echo "${MESSAGE}" >> "${LOG_FILE}"
+  local CURRENT_DATE=$(date)
+  local MESSAGE="LOG [${CURRENT_DATE}]: ${1}"
+  echo "${MESSAGE}" | tee -a "${LOG_FILE}"
 }
 
 function printLine()
 {
   local MESSAGE="${1}......"
-  echo "${MESSAGE}"
 
   if [[ $LOG_ENABLED == 1 ]]; then
     logToFile "${MESSAGE}"
+  else
+    echo "${MESSAGE}"
   fi
 }
 
@@ -43,7 +45,7 @@ function addAccount()
     local PASSWORD=${2}
 
     printLine "Creating account ${USERNAME}"
-    adduser --quiet --disabled-password --shell /bin/zsh --home "/home/${USERNAME}" --gecos "${USERNAME}" "${USERNAME}"
+    adduser --disabled-password --shell /bin/zsh --home "/home/${USERNAME}" --gecos "${USERNAME}" "${USERNAME}"
 
     printLine "Changing password for ${USERNAME}"
     echo "${USERNAME}:${PASSWORD}" | chpasswd
