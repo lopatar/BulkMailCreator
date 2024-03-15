@@ -9,9 +9,9 @@ Boring hassle of blindly copy-pasting commands is over.
 # Usage
 ## Installation
 ```zsh
-    git clone https://github.com/lopatar/BulkMailCreator.git
-    cd BulkMailCreator
-    chmod +x addAccount.sh
+git clone https://github.com/lopatar/BulkMailCreator.git
+cd BulkMailCreator
+chmod +x addAccount.sh
 ```
 
 ## Direct script editing
@@ -19,6 +19,8 @@ To specify e-mail accounts to add, you can modify the script itself and use the 
 ```zsh
 #!/bin/zsh
 addAccount "John-Smith" "UltraSecurePassword"
+
+./addAccount.sh
 ```
 
 ## Importing the script
@@ -27,6 +29,9 @@ You can import the script in any of your scripts and use the methods provided. H
 #!/bin/zsh
 source addAccount.sh
 addAccount "John-Smith" "UltraSecurePassword"
+
+chmod +x yourScript.sh
+./yourScript.sh
 ```
 # Logging
 
