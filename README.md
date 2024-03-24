@@ -11,6 +11,7 @@ Boring hassle of blindly copy-pasting commands is over.
 
 ## Installation
 ```zsh
+#!/bin/zsh -e
 git clone https://github.com/lopatar/BulkMailCreator.git
 cd BulkMailCreator
 chmod +x addAccount.sh
@@ -20,7 +21,7 @@ chmod +x addAccount.sh
 To specify e-mail accounts to add, you can modify the script itself and use the function `addAccount(username, password)`. Example usage is [here.](https://github.com/lopatar/BulkMailCreator/blob/main/addAccount.sh#L57)
 
 ```zsh
-#!/bin/zsh
+#!/bin/zsh -e 
 addAccount "John-Smith" "UltraSecurePassword"
 
 ./addAccount.sh
