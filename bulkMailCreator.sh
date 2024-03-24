@@ -3,6 +3,7 @@ LOG_FILE="email-accounts.log"
 
 function logToFile()
 {
+  # shellcheck disable=SC2155
   local CURRENT_DATE=$(date)
   local MESSAGE="LOG [${CURRENT_DATE}]: ${1}"
   echo "${MESSAGE}" | tee -a "${LOG_FILE}"
@@ -45,10 +46,10 @@ function addAccount()
     local PASSWORD=${2}
 
     printLine "Creating account ${USERNAME}"
-    adduser --disabled-password --shell /bin/zsh --home "/home/${USERNAME}" --gecos "${USERNAME}" "${USERNAME}"
+    adduser --disabled-password --shell /bin/zsh --home /home/"${USERNAME}" --gecos "${USERNAME}" "${USERNAME}"
 
     printLine "Changing password for ${USERNAME}"
-    echo "${USERNAME}:${PASSWORD}" | chpasswd
+    echo "${USERNAME}":"${PASSWORD}" | chpasswd
 
     printLine "Changing group for ${USERNAME} to mail"
     usermod -aG mail "${USERNAME}"
@@ -56,4 +57,6 @@ function addAccount()
 
 checkRoot
 
-addAccount "John-Smith" "UltraSecurePassword"
+# EXAMPLE USAGE
+#addAccount "John-Smith" 'UltraSecurePassword'
+#addAccount 'Mister-Mail' 'ExtraPass'
