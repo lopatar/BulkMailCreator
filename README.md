@@ -12,7 +12,7 @@ Boring hassle of blindly copy-pasting commands is over.
 ## Installation
 ```zsh
 #!/bin/zsh -e
-git clone https://github.com/lopatar/BulkMailCreator.git
+git clone https://github.com/lopatar/BulkMailCreator.git --branch master
 cd BulkMailCreator
 chmod +x ./bulkMailCreator.sh
 ```
