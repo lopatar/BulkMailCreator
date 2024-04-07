@@ -1,3 +1,4 @@
+# **Currently experiencing weird issues about username variable value changes**
 # Bulk mail creator
 
 This shell script is intended to ease bulk adding e-mail accounts to your e-mail server.
